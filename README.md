@@ -19,7 +19,7 @@ The memory is 2D so it would look like this
     <td>Move pointer up</td>
   </tr>
   <tr>
-    <td><b>Y</b></td>
+    <td><b>!</b></td>
     <td>Move pointer down</td>
   </tr>
   <tr>
@@ -41,5 +41,9 @@ The memory is 2D so it would look like this
   <tr>
     <td><b>%</b></td>
     <td>Random number, either 0 or 1</td>
+  </tr>
+  <tr>
+    <td><b>_</b></td>
+    <td>Print memory as float</td>
   </tr>
 </table>
