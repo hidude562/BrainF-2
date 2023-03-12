@@ -14,8 +14,8 @@ public class Execution {
         protected int pointerX;
         protected int pointerY;
 
-        protected short pointer_mem_contents;
-        protected short[][] ram;
+        protected float pointer_mem_contents;
+        protected float[][] ram;
         protected Stack<Integer> loop_stack;
 
         public Memory(int ram_words, short ram_word_width) {
@@ -27,7 +27,7 @@ public class Execution {
             this.pointerY = 0;
             this.loop_stack = new Stack<>();
 
-            this.ram = new short[ram_words][ram_words];
+            this.ram = new float[ram_words][ram_words];
         }
     }
 
@@ -52,6 +52,8 @@ public class Execution {
             case ',' -> (byte) 7;
             case '^' -> (byte) 8;
             case '!' -> (byte) 9;
+            case '*' -> (byte) 10;
+            case '/' -> (byte) 11;
 
             // TODO: Add other functionality
 
@@ -63,8 +65,8 @@ public class Execution {
         memory.pointer_mem_contents = memory.ram[memory.pointerX][memory.pointerY];
     }
     
-    private int simulateBitWidth(int number) {
-      int fit_num = number % (memory.ram_word_width);
+    private float simulateBitWidth(float number) {
+      float fit_num = number % (memory.ram_word_width);
       if (fit_num < 0) {
          fit_num = fit_num + memory.ram_word_width;
       }
@@ -80,10 +82,12 @@ public class Execution {
             case 3 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]--; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
             case 4 -> {if(simulate)memory.pointerX--;}
             case 5 -> {if(simulate)memory.pointerX++;}
-            case 6 -> {if(simulate)System.out.print((char) memory.pointer_mem_contents);} // (char) memory.pointer_mem_contents
+            case 6 -> {if(simulate)System.out.print((char) ((int) memory.pointer_mem_contents));} // (char) memory.pointer_mem_contents
             case 7 -> {if(simulate) {Scanner input = new Scanner(System.in); System.out.print("?:"); memory.ram[memory.pointerX][memory.pointerY] = (byte) input.next().charAt(0);}}
             case 8 -> {if(simulate)memory.pointerY--;}
             case 9 -> {if(simulate)memory.pointerY++;}
+            case 10 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]*=2; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
+            case 11 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]/=2f; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
 
         }
         memory.pc++;
