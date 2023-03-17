@@ -54,7 +54,9 @@ public class Execution {
             case '!' -> (byte) 9;
             case '*' -> (byte) 10;
             case '/' -> (byte) 11;
-
+            case '%' -> (byte) 12;
+            case '_' -> (byte) 13;
+            
             // TODO: Add other functionality
 
             default -> (byte) -1;
@@ -88,7 +90,8 @@ public class Execution {
             case 9 -> {if(simulate)memory.pointerY++;}
             case 10 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]*=2; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
             case 11 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]/=2f; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
-
+            case 12 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]+= (int) Math.round(Math.random());}
+            case 13 -> {if(simulate)System.out.print(memory.ram[memory.pointerX][memory.pointerY]);}
         }
         memory.pc++;
     }

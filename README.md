@@ -40,7 +40,7 @@ The memory is 2D so it would look like this
   </tr>
   <tr>
     <td><b>%</b></td>
-    <td>Random number, either 0 or 1</td>
+    <td>add random number to memory, either 0 or 1</td>
   </tr>
   <tr>
     <td><b>_</b></td>
