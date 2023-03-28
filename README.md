@@ -46,4 +46,8 @@ The memory is 2D so it would look like this
     <td><b>_</b></td>
     <td>Print memory as float</td>
   </tr>
+  <tr>
+    <td><b>#</b></td>
+    <td>Input memory as float</td>
+  </tr>
 </table>

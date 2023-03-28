@@ -56,6 +56,7 @@ public class Execution {
             case '/' -> (byte) 11;
             case '%' -> (byte) 12;
             case '_' -> (byte) 13;
+            case '#' -> (byte) 14;
             
             // TODO: Add other functionality
 
@@ -92,6 +93,7 @@ public class Execution {
             case 11 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]/=2f; memory.ram[memory.pointerX][memory.pointerY] = (short)simulateBitWidth(memory.ram[memory.pointerX][memory.pointerY]);}
             case 12 -> {if(simulate)memory.ram[memory.pointerX][memory.pointerY]+= (int) Math.round(Math.random());}
             case 13 -> {if(simulate)System.out.print(memory.ram[memory.pointerX][memory.pointerY]);}
+            case 14 -> {if(simulate) {Scanner input = new Scanner(System.in); System.out.print("?:"); memory.ram[memory.pointerX][memory.pointerY] = (byte) input.nextDouble();}}
         }
         memory.pc++;
     }
